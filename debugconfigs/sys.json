@@ -1,0 +1,11 @@
+{
+	"BindAddr": "http://127.0.0.1:20001",
+	"SemaphoreSlim": 2,
+	"ServiceName" :"Notification",
+	"ServiceId":1,
+	"KVPairs":{
+		"WeComCorpId": "ww140bc97a9a3a060f",
+		"WeComSecret": "erOkVkl0WXPpnfgDVT5Sct0gMw5Lg7vWfL7tqWRXnkI",
+		"WeAgentId": "1000002"
+	}
+}
