@@ -13,7 +13,7 @@ namespace Notification
     {
 
         public static Config Config;
-
+        private static RedisConnection RedisConnection { get; set; }
         private static bool init()
         {
             bool result = false;
@@ -27,7 +27,10 @@ namespace Notification
             {
                 Config = new Config($"{configFolder}/sys.json");
 
-                new RedisConnection($"{configFolder}/redis.json");
+                RedisConnection = new RedisConnection($"{configFolder}/redis.json");
+
+                var rds = new CSRedis.CSRedisClient($"{RedisConnection.Host}:{RedisConnection.Port},password={RedisConnection.Password},defaultDatabase={RedisConnection.DatabaseId}");
+                RedisHelper.Initialization(rds);
 
                 result = true;
             });

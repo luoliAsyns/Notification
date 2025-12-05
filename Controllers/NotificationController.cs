@@ -81,19 +81,20 @@ namespace Notification.Controllers
         }
 
 
-        private string getWeComToken()
+        private async Task<string> getWeComToken()
         {
             try
             {
-                if (RedisHelper.Exists("WeComToken"))
-                    return RedisHelper.Get("WeComToken");
+                if (await RedisHelper.ExistsAsync("WeComToken"))
+                    return await RedisHelper.GetAsync("WeComToken");
 
                 // 获取Token
                 string getTokenUrl = string.Intern($"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={Program.Config.KVPairs["WeComCorpId"]}&corpsecret={Program.Config.KVPairs["WeComSecret"]}");
 
-                var result = JsonConvert
-                       .DeserializeObject<dynamic>(new RestClient(getTokenUrl)
-                       .Get(new RestRequest()).Content);
+                var resp = await ApiCaller.GetAsync(getTokenUrl);
+
+
+                var result = JsonConvert.DeserializeObject<dynamic>( await resp.Content.ReadAsStringAsync());
 
                 string token = result.access_token;
 
@@ -111,7 +112,7 @@ namespace Notification.Controllers
 
         private async Task<(bool, string)> weComNotify(string msg, string weComTouId)
         {
-            string token = getWeComToken();
+            string token =await getWeComToken();
 
             try
             {
