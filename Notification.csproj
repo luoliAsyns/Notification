@@ -7,9 +7,9 @@
 	  <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
 
 	  <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.1</FileVersion>
+      <InvariantGlobalization>true</InvariantGlobalization>
+      <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      <FileVersion>2.0.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LuoliHelper\LuoliHelper.csproj" />
+    <ProjectReference Include="..\..\Common\LuoliDatabase\LuoliDatabase.csproj" />
   </ItemGroup>
 
 </Project>

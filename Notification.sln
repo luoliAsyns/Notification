@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36429.23 d17.14
+VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification", "Notification.csproj", "{512F38E0-4A0E-0E9F-AE02-C123F3EE4ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuoliDatabase", "..\..\Common\LuoliDatabase\LuoliDatabase.csproj", "{1B5A90AB-CD96-C9E1-7EE9-94AEC9A0EB19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuoliUtils", "..\..\Common\LuoliUtils\LuoliUtils.csproj", "{80E19BD4-B30C-A8D8-C4B6-CB5BADBEEEB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{512F38E0-4A0E-0E9F-AE02-C123F3EE4ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{512F38E0-4A0E-0E9F-AE02-C123F3EE4ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{512F38E0-4A0E-0E9F-AE02-C123F3EE4ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B5A90AB-CD96-C9E1-7EE9-94AEC9A0EB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5A90AB-CD96-C9E1-7EE9-94AEC9A0EB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5A90AB-CD96-C9E1-7EE9-94AEC9A0EB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5A90AB-CD96-C9E1-7EE9-94AEC9A0EB19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E19BD4-B30C-A8D8-C4B6-CB5BADBEEEB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E19BD4-B30C-A8D8-C4B6-CB5BADBEEEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E19BD4-B30C-A8D8-C4B6-CB5BADBEEEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E19BD4-B30C-A8D8-C4B6-CB5BADBEEEB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,14 +1,9 @@
-﻿using LuoliHelper.Entities;
-using LuoliHelper.Enums;
-using LuoliHelper.StaticClasses;
-using LuoliHelper.Utils;
+﻿using LuoliCommon.Entities;
+using LuoliCommon.Enums;
+using LuoliUtils;
 using MethodTimer;
-using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RestSharp;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 
 namespace Notification.Controllers
 {
@@ -16,6 +11,14 @@ namespace Notification.Controllers
     {
 
         private static readonly SemaphoreSlim _semaphore = new SemaphoreSlim(Program.Config.SemaphoreSlim);
+
+
+        private readonly LuoliCommon.Logger.ILogger _logger;
+        public NotificationController(LuoliCommon.Logger.ILogger logger)
+        {
+            _logger = logger;
+        }
+
 
         public class NotifyRequest
         {
@@ -32,7 +35,7 @@ namespace Notification.Controllers
         {
             ApiResponse<string> response = new ApiResponse<string>();
 
-            SLogger.Info($"trigger NotificationController.NotifyMsg with {json}");
+            _logger.Info($"trigger NotificationController.NotifyMsg with {json}");
 
 
             bool acquired = await _semaphore.WaitAsync(300);
@@ -65,7 +68,7 @@ namespace Notification.Controllers
             {
                 response.msg = ex.Message;
                 response.code = EResponseCode.Fail;
-                SLogger.Error(ex.Message);
+                _logger.Error(ex.Message);
             }
             finally
             {
@@ -96,12 +99,12 @@ namespace Notification.Controllers
 
                 RedisHelper.SetAsync("WeComToken", token, 60 * 15); //15min
 
-                SLogger.Info($"Got Token from weixin api:{token}");
+                _logger.Info($"Got Token from weixin api:{token}");
                 return token;
             }
             catch (Exception ex)
             {
-                SLogger.Error($"GetWeComToken error:{ex.Message}");
+                _logger.Error($"GetWeComToken error:{ex.Message}");
                 return "";
             }
         }
@@ -114,7 +117,7 @@ namespace Notification.Controllers
             {
                 if (String.IsNullOrWhiteSpace(token))
                 {
-                    SLogger.Error("WeComNotify get token fail");
+                    _logger.Error("WeComNotify get token fail");
                     return (false, "WeComNotify get token fail");
                 }
 
@@ -137,7 +140,7 @@ namespace Notification.Controllers
             }
             catch (Exception ex)
             {
-                SLogger.Error($"WeComNotify error:{ex.Message}");
+                _logger.Error($"WeComNotify error:{ex.Message}");
                 return (false, ex.Message);
             }
 
