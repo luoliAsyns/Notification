@@ -9,12 +9,17 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
       <InvariantGlobalization>true</InvariantGlobalization>
       <AssemblyVersion>2.0.0.0</AssemblyVersion>
-      <FileVersion>2.0.0.2</FileVersion>
+      <FileVersion>2.0.0.3</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CSRedisCore" Version="3.8.806" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	  <!-- 解决所有NU1605冲突的核心：显式指定4.3.0版本 -->
+	  <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
+	  <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+	  <PackageReference Include="System.Runtime.Handles" Version="4.3.0" />
+	  <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
